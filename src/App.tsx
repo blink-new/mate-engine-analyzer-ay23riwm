@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Github, Star, GitBranch, Users, FileText, ExternalLink, Download, PlayCircle } from 'lucide-react';
+import { Github, Star, GitBranch, Users, FileText, ExternalLink, Download, PlayCircle, Brain } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
+import { AIAnalysis } from './components/AIAnalysis';
+import { VRMAnalyzer } from './components/VRMAnalyzer';
+import { CommunityInsights } from './components/CommunityInsights';
 
 interface RepositoryInfo {
   name: string;
@@ -101,11 +104,11 @@ function App() {
           <div className="flex items-center justify-center gap-3 mb-2">
             <Github className="w-8 h-8 text-slate-700" />
             <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Mate Engine Analysis
+              Mate Engine Analysis with AI
             </h1>
           </div>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            Comprehensive analysis of the Mate Engine project - a free alternative to Desktop Mate with VRM support
+            Comprehensive analysis of the Mate Engine project with AI-powered insights, VRM compatibility checking, and community analytics
           </p>
         </div>
 
@@ -151,12 +154,18 @@ function App() {
 
         {/* Main Content Tabs */}
         <Tabs value={selectedTab} onValueChange={setSelectedTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-5">
+          <TabsList className="grid w-full grid-cols-8">
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="features">Features</TabsTrigger>
             <TabsTrigger value="comparison">Comparison</TabsTrigger>
             <TabsTrigger value="tech">Tech Stack</TabsTrigger>
             <TabsTrigger value="steam">Steam Release</TabsTrigger>
+            <TabsTrigger value="ai-analysis">
+              <Brain className="w-4 h-4 mr-1" />
+              AI Analysis
+            </TabsTrigger>
+            <TabsTrigger value="vrm-analyzer">VRM Analyzer</TabsTrigger>
+            <TabsTrigger value="community">Community</TabsTrigger>
           </TabsList>
 
           <TabsContent value="overview" className="space-y-6">
@@ -209,6 +218,12 @@ function App() {
                     </div>
                     <div className="flex items-center gap-2">
                       <Badge variant="secondary">Advanced Animations</Badge>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Badge variant="outline" className="border-purple-300 text-purple-600">
+                        <Brain className="w-3 h-3 mr-1" />
+                        AI Enhanced Analysis
+                      </Badge>
                     </div>
                   </div>
                 </CardContent>
@@ -419,6 +434,18 @@ function App() {
               </CardContent>
             </Card>
           </TabsContent>
+
+          <TabsContent value="ai-analysis" className="space-y-6">
+            <AIAnalysis />
+          </TabsContent>
+
+          <TabsContent value="vrm-analyzer" className="space-y-6">
+            <VRMAnalyzer />
+          </TabsContent>
+
+          <TabsContent value="community" className="space-y-6">
+            <CommunityInsights />
+          </TabsContent>
         </Tabs>
 
         {/* Action Buttons */}
@@ -448,11 +475,17 @@ function App() {
           <CardContent className="pt-6">
             <div className="text-center space-y-2">
               <h3 className="text-lg font-semibold text-slate-700">
-                Mate Engine Analysis Tool
+                Mate Engine Analysis Tool with AI Integration
               </h3>
               <p className="text-sm text-slate-600">
-                Built with React, TypeScript, and Tailwind CSS • Data sourced from GitHub repository
+                Built with React, TypeScript, and Tailwind CSS • Enhanced with AI-powered analysis, VRM model checking, and community insights
               </p>
+              <div className="flex justify-center gap-2 mt-3">
+                <Badge variant="secondary">AI Analysis</Badge>
+                <Badge variant="secondary">VRM Compatibility</Badge>
+                <Badge variant="secondary">Community Insights</Badge>
+                <Badge variant="secondary">Performance Optimization</Badge>
+              </div>
             </div>
           </CardContent>
         </Card>
